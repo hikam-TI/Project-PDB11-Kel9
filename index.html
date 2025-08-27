@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tahu Walik - Jajanan Lezat Nusantara</title>
+    <style>
+        :root {
+            --primary: #e74c3c;
+            --secondary: #f39c12;
+            --accent: #27ae60;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+            --text: #2d3436;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a0196a0f-938f-4efd-89e5-f630b489ebbe.png') center/cover;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--dark);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .menu-item {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .menu-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .menu-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .menu-item:hover .menu-image img {
+            transform: scale(1.1);
+        }
+
+        .menu-content {
+            padding: 1.5rem;
+        }
+
+        .menu-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .menu-price {
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonials-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .testimonial {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--dark);
+        }
+
+        .testimonial-date {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+
+        .delete-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            display: none;
+        }
+
+        .admin-mode .delete-btn {
+            display: block;
+        }
+
+        .testimonial-form {
+            max-width: 600px;
+            margin: 3rem auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: var(--dark);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .team-member {
+            text-align: center;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        .team-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            overflow: hidden;
+            border: 4px solid var(--secondary);
+        }
+
+        .team-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .team-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .team-role {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-info {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            color: white;
+        }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+
+        .admin-panel {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .admin-toggle {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--primary);
+                padding: 1rem;
+            }
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container nav-container">
+            <div class="logo">
+                Tahu<span>Walik</span>
+            </div>
+            <button class="mobile-menu-btn">☰</button>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#beranda">Beranda</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#testimoni">Testimoni</a></li>
+                    <li><a href="#kontak">Kontak</a></li>
+                    <li><a href="#team">Team</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="beranda" class="hero">
+        <div class="container">
+            <h1>Tahu Walik Lezat</h1>
+            <p>Rasakan kelezatan tahu walik autentik dengan berbagai pilihan rasa yang menggugah selera. Dibuat dengan bahan-bahan terbaik dan resep turun temurun.</p>
+            <a href="#menu" class="btn">Lihat Menu</a>
+        </div>
+    </section>
+
+    <section id="menu">
+        <div class="container">
+            <h2 class="section-title">Menu Kami</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/0e2977c2-828f-4b57-97af-475fae72de1c.png" alt="Tahu walik original dengan kulit crispy berwarna golden brown di atas piring kayu" />
+                    </div>
+                    <div class="menu-content">
+                        <h3 class="menu-title">Tahu Walik Original</h3>
+                        <p>Tahu walik dengan isian ayam original yang gurih dan nikmat.</p>
+                        <div class="menu-price">Rp 15.000</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7cd96769-0b45-4116-8627-ee6193a14b3b.png" alt="Tahu walik pedas dengan saus sambal merah dan taburan bawang goreng" />
+                    </div>
+                    <div class="menu-content">
+                        <h3 class="menu-title">Tahu Walik Pedas</h3>
+                        <p>Untuk pecinta pedas, tahu walik dengan isian ayam pedas yang menggugah selera.</p>
+                        <div class="menu-price">Rp 17.000</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/52f2f0b5-7f0a-4cf2-a492-03a2376edb75.png" alt="Tahu walik keju mozzarella dengan cheese pull yang melimpah" />
+                    </div>
+                    <div class="menu-content">
+                        <h3 class="menu-title">Tahu Walik Keju</h3>
+                        <p>Perpaduan tahu walik dengan keju mozzarella yang lumer dan gurih.</p>
+                        <div class="menu-price">Rp 20.000</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimoni" style="background: #f8f9fa;">
+        <div class="container">
+            <h2 class="section-title">Testimoni Pelanggan</h2>
+            <div id="testimonials-container" class="testimonials-container">
+                <!-- Testimoni akan dimuat melalui JavaScript -->
+            </div>
+
+            <div class="testimonial-form">
+                <h3 style="text-align: center; margin-bottom: 2rem;">Tambah Testimoni</h3>
+                <form id="testimonialForm">
+                    <div class="form-group">
+                        <label for="name">Nama</label>
+                        <input type="text" id="name" required placeholder="Masukkan nama Anda">
+                    </div>
+                    <div class="form-group">
+                        <label for="testimonial">Testimoni</label>
+                        <textarea id="testimonial" rows="4" required placeholder="Bagikan pengalaman Anda tentang tahu walik kami"></textarea>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%;">Kirim Testimoni</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section id="team">
+        <div class="container">
+            <h2 class="section-title">Team Kami</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-image">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a685c820-4c26-4ecd-9431-16644bd778cb.png" alt="Koki profesional dengan seragam putih sedang tersenyum di dapur restoran" />
+                    </div>
+                    <h3 class="team-name">Budi Santoso</h3>
+                    <p class="team-role">Head Chef</p>
+                    <p>Spesialis tahu walik dengan pengalaman 10 tahun.</p>
+                </div>
+                <div class="team-member">
+                    <div class="team-image">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/6427f335-5d70-482c-9ec7-7857fd2ad4ae.png" alt="Wanita profesional dengan gelar manajemen bisnis kuliner sedang berbicara" />
+                    </div>
+                    <h3 class="team-name">Sari Wijaya</h3>
+                    <p class="team-role">Manager</p>
+                    <p>Mengelola operasional dengan penuh dedikasi.</p>
+                </div>
+                <div class="team-member">
+                    <div class="team-image">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/0ff4a1aa-2d68-4066-b4e8-7e0d3aeec807.png" alt="Staff muda yang ramah sedang melayani pelanggan dengan senyuman" />
+                    </div>
+                    <h3 class="team-name">Rina Putri</h3>
+                    <p class="team-role">Customer Service</p>
+                    <p>Selalu siap membantu dengan senyuman.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="kontak" style="background: #f8f9fa;">
+        <div class="container">
+            <h2 class="section-title">Kontak Kami</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3 style="margin-bottom: 2rem;">Informasi Kontak</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <strong>Alamat</strong><br>
+                            Jl. Tahu Walik No. 123, Jakarta
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div>
+                            <strong>Telepon</strong><br>
+                            +62 812-3456-7890
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <div>
+                            <strong>Email</strong><br>
+                            info@tahuwalik.com
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">🕒</div>
+                        <div>
+                            <strong>Jam Operasional</strong><br>
+                            Senin - Minggu: 08:00 - 22:00
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-info">
+                    <h3 style="margin-bottom: 2rem;">Lokasi Kami</h3>
+                    <div style="background: #ddd; height: 300px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #666;">
+                        Peta Lokasi akan muncul di sini
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2024 Tahu Walik. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div class="admin-panel">
+        <button class="admin-toggle" onclick="toggleAdminMode()">Admin Mode</button>
+    </div>
+
+    <script>
+        // Data menu
+        const menuItems = [
+            {
+                title: "Tahu Walik Original",
+                description: "Tahu walik dengan isian ayam original yang gurih dan nikmat.",
+                price: "Rp 15.000",
+                image: "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/15eb632f-3fc9-469c-89c0-57b9e871d197.png"
+            },
+            {
+                title: "Tahu Walik Pedas",
+                description: "Untuk pecinta pedas, tahu walik dengan isian ayam pedas yang menggugah selera.",
+                price: "Rp 17.000",
+                image: "https://placehold.co/400x300"
+            },
+            {
+                title: "Tahu Walik Keju",
+                description: "Perpaduan tahu walik dengan keju mozzarella yang lumer dan gurih.",
+                price: "Rp 20.000",
+                image: "https://placehold.co/400x300"
+            }
+        ];
+
+        // Testimoni functions
+        let testimonials = JSON.parse(localStorage.getItem('testimonials')) || [];
+        let isAdminMode = false;
+
+        function loadTestimonials() {
+            const container = document.getElementById('testimonials-container');
+            container.innerHTML = '';
+            
+            testimonials.forEach((testimonial, index) => {
+                const testimonialEl = document.createElement('div');
+                testimonialEl.className = 'testimonial';
+                testimonialEl.innerHTML = `
+                    <p class="testimonial-text">"${testimonial.text}"</p>
+                    <div class="testimonial-author">- ${testimonial.name}</div>
+                    <div class="testimonial-date">${new Date(testimonial.date).toLocaleDateString('id-ID')}</div>
+                    <button class="delete-btn" onclick="deleteTestimonial(${index})">Hapus</button>
+                `;
+                container.appendChild(testimonialEl);
+            });
+        }
+
+        function addTestimonial(name, text) {
+            const newTestimonial = {
+                name: name,
+                text: text,
+                date: new Date().toISOString()
+            };
+            
+            testimonials.push(newTestimonial);
+            localStorage.setItem('testimonials', JSON.stringify(testimonials));
+            loadTestimonials();
+        }
+
+        function deleteTestimonial(index) {
+            if (isAdminMode) {
+                if (confirm('Apakah Anda yakin ingin menghapus testimoni ini?')) {
+                    testimonials.splice(index, 1);
+                    localStorage.setItem('testimonials', JSON.stringify(testimonials));
+                    loadTestimonials();
+                }
+            }
+        }
+
+        function toggleAdminMode() {
+            isAdminMode = !isAdminMode;
+            document.body.classList.toggle('admin-mode', isAdminMode);
+            const button = document.querySelector('.admin-toggle');
+            button.textContent = isAdminMode ? 'Keluar Admin' : 'Admin Mode';
+            button.style.background = isAdminMode ? '#27ae60' : '#e74c3c';
+        }
+
+        // Event listeners
+        document.getElementById('testimonialForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const testimonial = document.getElementById('testimonial').value;
+            
+            addTestimonial(name, testimonial);
+            
+            // Reset form
+            document.getElementById('name').value = '';
+            document.getElementById('testimonial').value = '';
+            
+            alert('Testimoni berhasil dikirim! Terima kasih atas feedback Anda.');
+        });
+
+        // Mobile menu
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on links
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.querySelector('.nav-links').classList.remove('active');
+            });
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Initial load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadTestimonials();
+            
+            // Add some sample testimonials if empty
+            if (testimonials.length === 0) {
+                addTestimonial('Budi', 'Tahu waliknya sangat enak dan crispy! Rasanya autentik banget.');
+                addTestimonial('Sari', 'Pelayanan cepat dan tahu waliknya selalu fresh. Recommended!');
+                addTestimonial('Rina', 'Sudah berkali-kali beli disini, selalu konsisten enaknya.');
+            }
+        });
+    </script>
+</body>
+</html>
