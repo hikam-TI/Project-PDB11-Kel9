@@ -345,40 +345,473 @@
             margin-top: 2rem;
         }
 
+        /* Mobile Menu Styles */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 5px;
+            transition: var(--transition);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+        }
+
+        .mobile-menu-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .hamburger-line {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 2px 0;
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        .mobile-menu-btn.active .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .mobile-menu-btn.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-btn.active .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        /* WhatsApp Button Styles */
+        #whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            padding: 12px;
+            z-index: 10000;
+            transition: transform 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            width: 60px;
+            height: 60px;
+        }
+        #whatsapp-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+        #whatsapp-button svg {
+            width: 32px;
+            height: 32px;
+        }
+
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .nav-links.active {
-                display: flex;
-                flex-direction: column;
                 position: absolute;
                 top: 100%;
                 left: 0;
                 right: 0;
                 background: var(--primary);
                 padding: 1rem;
+                flex-direction: column;
+                text-align: center;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 0.5rem 0;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 1rem;
+                border-radius: 8px;
+            }
+
+            .nav-links a:hover {
+                background: rgba(255, 255, 255, 0.2);
+            }
+
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            #whatsapp-button {
+                width: 50px;
+                height: 50px;
+                padding: 10px;
+            }
+            #whatsapp-button svg {
+                width: 28px;
+                height: 28px;
             }
         }
 
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .menu-grid,
+            .testimonials-container,
+            .team-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            #whatsapp-button {
+                bottom: 15px;
+                right: 15px;
+                width: 45px;
+                height: 45px;
+                padding: 8px;
+            }
+            #whatsapp-button svg {
+                width: 24px;
+                height: 24px;
+            }
         }
     </style>
 </head>
 <body>
-    <header
+    <header>
+        <div class="container nav-container">
+            <div class="logo">
+                Tahu<span>Walik</span>
+            </div>
+            <button class="mobile-menu-btn">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#beranda">Beranda</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#testimoni">Testimoni</a></li>
+                    <li><a href="#kontak">Kontak</a></li>
+                    <li><a href="#team">Team</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="beranda" class="hero">
+        <div class="container">
+            <h1>Tahu Walik Lezat</h1>
+            <p>Rasakan kelezatan tahu walik autentik dengan berbagai pilihan rasa yang menggugah selera. Dibuat dengan bahan-bahan terbaik dan resep turun temurun.</p>
+            <a href="#menu" class="btn">Lihat Menu</a>
+        </div>
+    </section>
+
+    <section id="menu">
+        <div class="container">
+            <h2 class="section-title">Menu Kami</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/beeac7bd-35bf-4a26-8ed1-ca407411308c.png" alt="Tahu walik original dengan kulit crispy berwarna golden brown di atas piring kayu" />
+                    </div>
+                    <div class="menu-content">
+                        <h3 class="menu-title">Tahu Walik Original</h3>
+                        <p>Tahu walik dengan isian ayam original yang gurih dan nikmat.</p>
+                        <div class="menu-price">Rp 15.000</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/5bde68f9-3ab3-4dd1-9f04-e6f05a44e8ef.png" alt="Tahu walik pedas dengan saus sambal merah dan taburan bawang goreng" />
+                    </div>
+                    <div class="menu-content">
+                        <h3 class="menu-title">Tahu Walik Pedas</h3>
+                        <p>Untuk pecinta pedas, tahu walik dengan isian ayam pedas yang menggugah selera.</p>
+                        <div class="menu-price">Rp 17.000</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/12224359-92ec-4a6c-92c8-e4820c5c4146.png" alt="Tahu walik keju mozzarella dengan cheese pull yang melimpah" />
+                    </div>
+                    <div class="menu-content">
+                        <h3 class="menu-title">Tahu Walik Keju</h3>
+                        <p>Perpaduan tahu walik dengan keju mozzarella yang lumer dan gurih.</p>
+                        <div class="menu-price">Rp 20.000</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimoni" style="background: #f8f9fa;">
+        <div class="container">
+            <h2 class="section-title">Testimoni Pelanggan</h2>
+            <div id="testimonials-container" class="testimonials-container">
+                <!-- Testimoni akan dimuat melalui JavaScript -->
+            </div>
+
+            <div class="testimonial-form">
+                <h3 style="text-align: center; margin-bottom: 2rem;">Tambah Testimoni</h3>
+                <form id="testimonialForm">
+                    <div class="form-group">
+                        <label for="name">Nama</label>
+                        <input type="text" id="name" required placeholder="Masukkan nama Anda">
+                    </div>
+                    <div class="form-group">
+                        <label for="testimonial">Testimoni</label>
+                        <textarea id="testimonial" rows="4" required placeholder="Bagikan pengalaman Anda tentang tahu walik kami"></textarea>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%;">Kirim Testimoni</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section id="team">
+        <div class="container">
+            <h2 class="section-title">Team Kami</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-image">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/dfeae7ba-036a-4284-a27f-fff3419742d9.png" alt="Koki profesional dengan seragam putih sedang tersenyum di dapur restoran" />
+                    </div>
+                    <h3 class="team-name">Budi Santoso</h3>
+                    <p class="team-role">Head Chef</p>
+                    <p>Spesialis tahu walik dengan pengalaman 10 tahun.</p>
+                </div>
+                <div class="team-member">
+                    <div class="team-image">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/1847d4a3-4991-449c-8ff6-2101272f1c2f.png" alt="Wanita profesional dengan gelar manajemen bisnis kuliner sedang berbicara" />
+                    </div>
+                    <h3 class="team-name">Sari Wijaya</h3>
+                    <p class="team-role">Manager</p>
+                    <p>Mengelola operasional dengan penuh dedikasi.</p>
+                </div>
+                <div class="team-member">
+                    <div class="team-image">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/d905b6c0-8d0b-4453-ba97-46dbdfb5ce26.png" alt="Staff muda yang ramah sedang melayani pelanggan dengan senyuman" />
+                    </div>
+                    <h3 class="team-name">Rina Putri</h3>
+                    <p class="team-role">Customer Service</p>
+                    <p>Selalu siap membantu dengan senyuman.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="kontak" style="background: #f8f9fa;">
+        <div class="container">
+            <h2 class="section-title">Kontak Kami</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3 style="margin-bottom: 2rem;">Informasi Kontak</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <strong>Alamat</strong><br>
+                            Jl. Tahu Walik No. 123, Jakarta
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div>
+                            <strong>Telepon</strong><br>
+                            +62 812-3456-7890
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <div>
+                            <strong>Email</strong><br>
+                            info@tahuwalik.com
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">🕒</div>
+                        <div>
+                            <strong>Jam Operasional</strong><br>
+                            Senin - Minggu: 08:00 - 22:00
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-info">
+                    <h3 style="margin-bottom: 2rem;">Lokasi Kami</h3>
+                    <div style="background: #ddd; height: 300px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #666;">
+                        Peta Lokasi akan muncul di sini
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2024 Tahu Walik. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Tombol WhatsApp -->
+    <a href="https://wa.me/6281234567890?text=Permisi%20kak%2C%20saya%20mau%20beli%20tahu%20walik" target="_blank" rel="noopener" id="whatsapp-button" aria-label="Chat via WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="#25D366" viewBox="0 0 24 24" width="32px" height="32px">
+            <path d="M20.52 3.48A11.94 11.94 0 0012 0C5.37 0 0 5.37 0 12a11.94 11.94 0 001.64 6.04L0 24l5.96-1.58A11.94 11.94 0 0012 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.2-3.48-8.52zm-8.52 17.04a8.4 8.4 0 01-4.3-1.2l-.3-.18-3.54.94.94-3.45-.2-.3a8.4 8.4 0 1110.4 4.2zm4.5-6.3c-.25-.12-1.48-.73-1.7-.81-.22-.08-.38-.12-.54.12s-.62.81-.76.98c-.14.18-.28.2-.53.07a6.1 6.1 0 01-1.8-1.1 6.8 6.8 0 01-1.26-1.56c-.13-.22 0-.34.1-.46.1-.1.22-.28.33-.42.1-.14.13-.25.2-.42.07-.17 0-.3-.03-.42-.07-.12-.54-1.3-.74-1.78-.20-.47-.4-.4-.54-.4-.14 0-.3 0-.46 0a1.1 1.1 0 00-.8.38 3.4 3.4 0 00-1.3 3.1 6.3 6.3 0 001.5 3.3 13.3 13.3 0 005.7 5.7 6.3 6.3 0 003.3 1.5 3.4 3.4 0 003.1-1.3 1.1 1.1 0 00.38-.8c0-.16 0-.32 0-.46 0-.14.07-.3-.4-.54z"/>
+        </svg>
+    </a>
+
+    <script>
+        // Data menu
+        const menuItems = [
+            {
+                title: "Tahu Walik Original",
+                description: "Tahu walik dengan isian ayam original yang gurih dan nikmat.",
+                price: "Rp 15.000",
+                image: "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/24d13fe4-47c5-4d4c-ad59-7e895443b997.png"
+            },
+            {
+                title: "Tahu Walik Pedas",
+                description: "Untuk pecinta pedas, tahu walik dengan isian ayam pedas yang menggugah selera.",
+                price: "Rp 17.000",
+                image: "https://placehold.co/400x300"
+            },
+            {
+                title: "Tahu Walik Keju",
+                description: "Perpaduan tahu walik dengan keju mozzarella yang lumer dan gurih.",
+                price: "Rp 20.000",
+                image: "https://placehold.co/400x300"
+            }
+        ];
+
+        // Testimoni functions
+        let testimonials = JSON.parse(localStorage.getItem('testimonials')) || [];
+
+        function loadTestimonials() {
+            const container = document.getElementById('testimonials-container');
+            container.innerHTML = '';
+            
+            testimonials.forEach((testimonial) => {
+                const testimonialEl = document.createElement('div');
+                testimonialEl.className = 'testimonial';
+                testimonialEl.innerHTML = `
+                    <p class="testimonial-text">"${testimonial.text}"</p>
+                    <div class="testimonial-author">- ${testimonial.name}</div>
+                    <div class="testimonial-date">${new Date(testimonial.date).toLocaleDateString('id-ID')}</div>
+                `;
+                container.appendChild(testimonialEl);
+            });
+        }
+
+        function addTestimonial(name, text) {
+            const newTestimonial = {
+                name: name,
+                text: text,
+                date: new Date().toISOString()
+            };
+            
+            testimonials.push(newTestimonial);
+            localStorage.setItem('testimonials', JSON.stringify(testimonials));
+            loadTestimonials();
+        }
+
+        // Mobile menu functionality
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenuBtn.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when clicking on links
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenuBtn.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.nav-container') && navLinks.classList.contains('active')) {
+                mobileMenuBtn.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
+        });
+
+        // Testimonial form
+        document.getElementById('testimonialForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const testimonial = document.getElementById('testimonial').value;
+            
+            addTestimonial(name, testimonial);
+            
+            // Reset form
+            document.getElementById('name').value = '';
+            document.getElementById('testimonial').value = '';
+            
+            alert('Testimoni berhasil dikirim! Terima kasih atas feedback Anda.');
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Initial load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadTestimonials();
+            
+            // Add some sample testimonials if empty
+            if (testimonials.length === 0) {
+                addTestimonial('Budi', 'Tahu waliknya sangat enak dan crispy! Rasanya autentik banget.');
+                addTestimonial('Sari', 'Pelayanan cepat dan tahu waliknya selalu fresh. Recommended!');
+                addTestimonial('Rina', 'Sudah berkali-kali beli disini, selalu konsisten enaknya.');
+            }
+        });
+    </script>
+</body>
+</html>
